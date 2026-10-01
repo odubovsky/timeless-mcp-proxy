@@ -1,0 +1,8 @@
+{
+  "directStatus": 200,
+  "proxyStatus": 200,
+  "directIsError": true,
+  "proxyIsError": true,
+  "sameText": true,
+  "textLength": 45
+}

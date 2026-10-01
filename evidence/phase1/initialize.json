@@ -1,0 +1,35 @@
+{
+  "url": "https://api.timeless.day/mcp/",
+  "status": 200,
+  "headers": {
+    "content-type": "text/event-stream",
+    "cache-control": "no-cache, no-transform",
+    "x-accel-buffering": "no"
+  },
+  "result": {
+    "protocolVersion": "2025-03-26",
+    "capabilities": {
+      "experimental": {},
+      "logging": {},
+      "prompts": {
+        "listChanged": true
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": true
+      },
+      "tools": {
+        "listChanged": true
+      },
+      "extensions": {
+        "io.modelcontextprotocol/ui": {}
+      }
+    },
+    "serverInfo": {
+      "name": "Timeless",
+      "version": "3.2.0"
+    }
+  },
+  "notificationStatus": 202,
+  "notificationBodyEmpty": true
+}

@@ -1,0 +1,8 @@
+{
+  "status": 200,
+  "server": {
+    "name": "Timeless",
+    "version": "3.2.0"
+  },
+  "protocol": "2025-03-26"
+}

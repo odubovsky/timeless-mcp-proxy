@@ -1,0 +1,5 @@
+{
+  "missingChallengeStatus": 302,
+  "missingChallengeError": "invalid_request",
+  "wrongVerifierStatus": 400
+}

@@ -1,0 +1,6 @@
+{
+  "files": [
+    "src/*.mjs"
+  ],
+  "definedToolNames": []
+}

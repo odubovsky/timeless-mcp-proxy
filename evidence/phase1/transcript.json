@@ -1,0 +1,53 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "text/event-stream",
+    "cache-control": "no-cache, no-transform",
+    "x-accel-buffering": "no"
+  },
+  "isError": false,
+  "shape": {
+    "type": "object",
+    "keys": [
+      "language",
+      "meeting_id",
+      "segments",
+      "speakers"
+    ],
+    "fields": {
+      "meeting_id": {
+        "type": "string",
+        "length": 26,
+        "prefix": "mtg_"
+      },
+      "language": {
+        "type": "string"
+      },
+      "speakers": {
+        "type": "array",
+        "length": 2,
+        "item": {
+          "type": "object",
+          "keys": [
+            "id",
+            "name"
+          ]
+        }
+      },
+      "segments": {
+        "type": "array",
+        "length": 243,
+        "item": {
+          "type": "object",
+          "keys": [
+            "end_time",
+            "speaker_id",
+            "start_time",
+            "text"
+          ]
+        }
+      }
+    }
+  },
+  "requestedIdPrefix": "mtg_"
+}

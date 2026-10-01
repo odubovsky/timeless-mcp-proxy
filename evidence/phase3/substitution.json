@@ -1,0 +1,10 @@
+{
+  "header": [
+    "inbound-replaced=1",
+    "upstream-timeless=1",
+    "inbound-sha=present"
+  ],
+  "inboundShaMatches": true,
+  "replaced": true,
+  "upstreamTimeless": true
+}

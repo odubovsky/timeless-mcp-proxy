@@ -1,0 +1,10 @@
+{
+  "proxyStatus": 200,
+  "directStatus": 200,
+  "proxyProtocol": "2025-03-26",
+  "proxyServer": {
+    "name": "Timeless",
+    "version": "3.2.0"
+  },
+  "contentType": "text/event-stream"
+}

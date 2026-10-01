@@ -1,0 +1,100 @@
+{
+  "cases": [
+    {
+      "id": "TC-201",
+      "result": "PASS",
+      "evidence": "evidence/phase2/startup.log",
+      "note": "listening on 127.0.0.1:3010"
+    },
+    {
+      "id": "TC-202",
+      "result": "PASS",
+      "evidence": "evidence/phase2/initialize.json",
+      "note": "initialize matched native server identity"
+    },
+    {
+      "id": "TC-203",
+      "result": "PASS",
+      "evidence": "evidence/phase2/tools-list-diff.json",
+      "note": "17 tools equivalent"
+    },
+    {
+      "id": "TC-204",
+      "result": "PASS",
+      "evidence": "evidence/phase2/tools-list-diff.json",
+      "note": "missing 0, extra 0"
+    },
+    {
+      "id": "TC-205",
+      "result": "PASS",
+      "evidence": "evidence/phase2/tools-list-diff.json",
+      "note": "descriptions and schemas unchanged"
+    },
+    {
+      "id": "TC-206",
+      "result": "PASS",
+      "evidence": "evidence/phase2/meetings.json",
+      "note": "discovery equivalent"
+    },
+    {
+      "id": "TC-207",
+      "result": "PASS",
+      "evidence": "evidence/phase2/transcript.json",
+      "note": "transcript equivalent"
+    },
+    {
+      "id": "TC-208",
+      "result": "PASS",
+      "evidence": "evidence/phase2/automation.json",
+      "note": "automation payload equivalent"
+    },
+    {
+      "id": "TC-209",
+      "result": "PASS",
+      "evidence": "evidence/phase2/transport.json",
+      "note": "SSE and successive calls preserved"
+    },
+    {
+      "id": "TC-210",
+      "result": "PASS",
+      "evidence": "evidence/phase2/error.json",
+      "note": "upstream error preserved"
+    },
+    {
+      "id": "TC-211",
+      "result": "PASS",
+      "evidence": "evidence/phase2/auth-assert.json",
+      "note": "inbound-replaced=1; upstream-timeless=1; inbound-sha=5a97722b7bb933c1"
+    },
+    {
+      "id": "TC-212",
+      "result": "PASS",
+      "evidence": "evidence/phase2/secret-scan.json",
+      "note": "credential absent from responses"
+    },
+    {
+      "id": "TC-213",
+      "result": "PASS",
+      "evidence": "evidence/phase2/secret-scan.json",
+      "note": "credential absent from logs"
+    },
+    {
+      "id": "TC-214",
+      "result": "PASS",
+      "evidence": "evidence/phase2/fail-closed.json",
+      "note": "503 without upstream call"
+    },
+    {
+      "id": "TC-215",
+      "result": "PASS",
+      "evidence": "evidence/phase2/source-audit.json",
+      "note": "runtime source has no Timeless catalogue"
+    },
+    {
+      "id": "TC-216",
+      "result": "PASS",
+      "evidence": "evidence/phase2/restart.json",
+      "note": "catalogue stable across restart"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "status": 401,
+  "body": "{\"error\":\"insufficient_scope\"}",
+  "contentType": "application/json"
+}

@@ -1,0 +1,45 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "text/event-stream",
+    "cache-control": "no-cache, no-transform",
+    "x-accel-buffering": "no"
+  },
+  "isError": false,
+  "shape": {
+    "type": "object",
+    "keys": [
+      "data",
+      "has_more",
+      "next_cursor"
+    ],
+    "fields": {
+      "data": {
+        "type": "array",
+        "length": 1,
+        "item": {
+          "type": "object",
+          "keys": [
+            "created_at",
+            "duration",
+            "end_time",
+            "host",
+            "id",
+            "participants",
+            "share_url",
+            "source",
+            "start_time",
+            "status",
+            "title"
+          ]
+        }
+      },
+      "next_cursor": {
+        "type": "string"
+      },
+      "has_more": {
+        "type": "boolean"
+      }
+    }
+  }
+}

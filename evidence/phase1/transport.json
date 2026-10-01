@@ -1,0 +1,51 @@
+{
+  "endpoint": "https://api.timeless.day/mcp/",
+  "transport": "streamable-http",
+  "requestHeaders": [
+    "authorization",
+    "content-type",
+    "accept"
+  ],
+  "accept": "application/json, text/event-stream",
+  "successContentType": "text/event-stream",
+  "notificationStatus": 202,
+  "sessionHeaderPresent": false,
+  "protocolVersion": "2025-03-26",
+  "server": {
+    "name": "Timeless",
+    "version": "3.2.0"
+  },
+  "capabilities": {
+    "experimental": {},
+    "logging": {},
+    "prompts": {
+      "listChanged": true
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": true
+    },
+    "tools": {
+      "listChanged": true
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {}
+    }
+  },
+  "streaming": "SSE event:message frames; single-frame responses observed",
+  "preserve": [
+    "POST body bytes",
+    "accept",
+    "content-type",
+    "mcp-session-id",
+    "mcp-protocol-version",
+    "response status",
+    "response content-type",
+    "SSE body"
+  ],
+  "invalidToolStatus": 200,
+  "invalidToolIsError": true,
+  "invalidToolShape": {
+    "type": "null"
+  }
+}

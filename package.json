@@ -1,0 +1,13 @@
+{
+  "name": "timeless-mcp-proxy",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "phase1": "node scripts/phase1.mjs",
+    "phase2": "node scripts/phase2.mjs"
+  }
+}

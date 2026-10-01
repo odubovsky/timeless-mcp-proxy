@@ -1,0 +1,130 @@
+{
+  "cases": [
+    {
+      "id": "TC-301",
+      "result": "PASS",
+      "evidence": "evidence/phase3/connectivity.json",
+      "note": "endpoint reachable"
+    },
+    {
+      "id": "TC-302",
+      "result": "PASS",
+      "evidence": "evidence/phase3/unauthenticated.json",
+      "note": "401 oauth challenge"
+    },
+    {
+      "id": "TC-303",
+      "result": "PASS",
+      "evidence": "evidence/phase3/protected-resource.json",
+      "note": "metadata matches MCP resource"
+    },
+    {
+      "id": "TC-304",
+      "result": "PASS",
+      "evidence": "evidence/phase3/authorization-server.json",
+      "note": "discovery valid; ChatGPT CIMD accepted"
+    },
+    {
+      "id": "TC-305",
+      "result": "PASS",
+      "evidence": "evidence/phase3/pkce-flow.json",
+      "note": "authorization code and PKCE succeeded"
+    },
+    {
+      "id": "TC-306",
+      "result": "PASS",
+      "evidence": "evidence/phase3/pkce-rejected.json",
+      "note": "missing challenge and wrong verifier rejected"
+    },
+    {
+      "id": "TC-307",
+      "result": "PASS",
+      "evidence": "evidence/phase3/bad-signature.json",
+      "note": "tampered token rejected"
+    },
+    {
+      "id": "TC-308",
+      "result": "PASS",
+      "evidence": "evidence/phase3/expired.json",
+      "note": "expired token rejected"
+    },
+    {
+      "id": "TC-309",
+      "result": "PASS",
+      "evidence": "evidence/phase3/wrong-issuer.json",
+      "note": "wrong issuer rejected"
+    },
+    {
+      "id": "TC-310",
+      "result": "PASS",
+      "evidence": "evidence/phase3/wrong-audience.json",
+      "note": "wrong audience rejected"
+    },
+    {
+      "id": "TC-311",
+      "result": "PASS",
+      "evidence": "evidence/phase3/wrong-scope.json",
+      "note": "missing scope rejected"
+    },
+    {
+      "id": "TC-312",
+      "result": "PASS",
+      "evidence": "evidence/phase3/valid-token.json",
+      "note": "17 tools through validated token"
+    },
+    {
+      "id": "TC-313",
+      "result": "PASS",
+      "evidence": "evidence/phase3/substitution.json",
+      "note": "oauth token terminated at the proxy"
+    },
+    {
+      "id": "TC-314",
+      "result": "PASS",
+      "evidence": "evidence/phase3/secret-scan.json",
+      "note": "Timeless credential absent from responses and local logs"
+    },
+    {
+      "id": "TC-315",
+      "result": "PASS",
+      "evidence": "evidence/phase3/initialize.json",
+      "note": "production initialize matched Timeless"
+    },
+    {
+      "id": "TC-316",
+      "result": "PASS",
+      "evidence": "evidence/phase3/tools-list-diff.json",
+      "note": "equivalent to Phase 1 baseline"
+    },
+    {
+      "id": "TC-317",
+      "result": "PASS",
+      "evidence": "evidence/phase3/tools-list-diff.json",
+      "note": "missing 0, extra 0"
+    },
+    {
+      "id": "TC-318",
+      "result": "PASS",
+      "evidence": "evidence/phase3/meetings.json",
+      "note": "remote discovery matched direct Timeless"
+    },
+    {
+      "id": "TC-319",
+      "result": "PASS",
+      "evidence": "evidence/phase3/transcript.json",
+      "note": "remote transcript matched"
+    },
+    {
+      "id": "TC-320",
+      "result": "PASS",
+      "evidence": "evidence/phase3/upstream-error.json",
+      "note": "upstream error preserved"
+    },
+    {
+      "id": "TC-321",
+      "result": "FAIL",
+      "evidence": "evidence/phase3/chatgpt.json",
+      "note": "ChatGPT product connection is not completed in this run"
+    }
+  ]
+}

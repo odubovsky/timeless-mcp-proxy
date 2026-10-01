@@ -1,0 +1,10 @@
+{
+  "authorizeStatus": 302,
+  "iss": "https://timeless-mcp-proxy.vercel.app",
+  "stateMatches": true,
+  "tokenStatus": 200,
+  "tokenType": "Bearer",
+  "expiresIn": 3600,
+  "scope": "mcp:read",
+  "accessTokenIssued": true
+}

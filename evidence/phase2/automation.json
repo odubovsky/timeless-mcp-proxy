@@ -1,0 +1,20 @@
+{
+  "directError": false,
+  "proxyError": false,
+  "sameBody": true,
+  "shape": {
+    "type": "object",
+    "keys": [
+      "automation",
+      "editable"
+    ],
+    "fields": {
+      "automation": {
+        "type": "string"
+      },
+      "editable": {
+        "type": "boolean"
+      }
+    }
+  }
+}

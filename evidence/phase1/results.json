@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "id": "TC-101",
+      "result": "PASS",
+      "evidence": "evidence/phase1/initialize.json",
+      "note": "authentication accepted"
+    },
+    {
+      "id": "TC-102",
+      "result": "PASS",
+      "evidence": "evidence/phase1/initialize.json",
+      "note": "Timeless 3.2.0 protocol 2025-03-26"
+    },
+    {
+      "id": "TC-103",
+      "result": "PASS",
+      "evidence": "evidence/phase1/tools-list.json",
+      "note": "17 tools"
+    },
+    {
+      "id": "TC-104",
+      "result": "PASS",
+      "evidence": "evidence/phase1/schema-validation.json",
+      "note": "17 schemas usable"
+    },
+    {
+      "id": "TC-105",
+      "result": "PASS",
+      "evidence": "evidence/phase1/list-meetings.json",
+      "note": "one meeting returned"
+    },
+    {
+      "id": "TC-106",
+      "result": "PASS",
+      "evidence": "evidence/phase1/transcript.json",
+      "note": "transcript structure captured"
+    },
+    {
+      "id": "TC-107",
+      "result": "PASS",
+      "evidence": "evidence/phase1/notetaker-automation.json",
+      "note": "second payload shape captured"
+    },
+    {
+      "id": "TC-108",
+      "result": "PASS",
+      "evidence": "evidence/phase1/invalid-credential.json",
+      "note": "401 invalid_token"
+    },
+    {
+      "id": "TC-109",
+      "result": "PASS",
+      "evidence": "evidence/phase1/transport.json",
+      "note": "SSE POST, no session header observed"
+    },
+    {
+      "id": "TC-110",
+      "result": "PASS",
+      "evidence": "evidence/phase1/secret-scan.json",
+      "note": "no secrets in artifacts"
+    }
+  ],
+  "notes": []
+}

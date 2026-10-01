@@ -1,0 +1,12 @@
+{
+  "resource": "https://timeless-mcp-proxy.vercel.app/mcp",
+  "authorization_servers": [
+    "https://timeless-mcp-proxy.vercel.app"
+  ],
+  "scopes_supported": [
+    "mcp:read"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ]
+}

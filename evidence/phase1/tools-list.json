@@ -1,0 +1,651 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "text/event-stream",
+    "cache-control": "no-cache, no-transform",
+    "x-accel-buffering": "no"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "list_meetings",
+        "description": "List meetings for the authenticated user.\n\nSupports filtering by status, date range, participant, company, and room.\nReturns paginated results with cursor-based navigation.\nThe search parameter performs keyword filtering (not semantic search).\nUse expand to include related resources: \"documents\".",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "start_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "end_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "search": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "participant": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "company": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "room_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "expand": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "limit": {
+              "default": 25,
+              "type": "integer"
+            },
+            "cursor": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "list_upcoming_meetings",
+        "description": "List the authenticated user's calendar events that have not ended.\n\nOrdered by start time, with the meeting/VC URL and participant list needed to\nbuild a brief or target a bot. A meeting already in progress is included and\ncomes first, so the earliest entry may have a start_time in the past — compare\nstart_time and end_time before calling it \"the next meeting\". within_hours bounds\nhow far ahead to look and defaults to the next 24 hours: an upcoming event must\nstart inside it, while a meeting already in progress is always listed however long\nit runs. Raise it (max 168, a week) to reach further out. Paginated via cursor.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "within_hours": {
+              "default": 24,
+              "type": "integer"
+            },
+            "limit": {
+              "default": 25,
+              "type": "integer"
+            },
+            "cursor": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "get_meeting_transcript",
+        "description": "Get the transcript of a meeting.\n\nTakes a meeting ID (e.g. mtg_abc123) and returns speakers and\ntimestamped text segments.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "meeting_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "meeting_id"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "get_meeting_recording",
+        "description": "Get a signed URL for a meeting recording.\n\nTakes a meeting ID (e.g. mtg_abc123) and returns a temporary\ndownload URL.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "meeting_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "meeting_id"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "schedule_meeting_bot",
+        "description": "Schedule the AI note-taker bot to join a calendar event.\n\nTakes a calendar event ID (e.g. evt_abc123 — obtain one from\nlist_upcoming_meetings; a recorded meeting's mtg_ id is not accepted).\nScheduling is asynchronous: the response acknowledges the request with\nthe event_id and status \"scheduling\".",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "event_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event_id"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "send_bot_to_meeting_url",
+        "description": "Send the AI note-taker bot to a meeting link right now, with no calendar event needed.\n\nTakes a Zoom, Google Meet, Microsoft Teams, or Webex join link; the bot joins\nimmediately. For a meeting on the user's calendar, use schedule_meeting_bot instead.\nAsynchronous: the response returns status \"scheduling\" and the meeting_id (mtg_...)\nthe recording and transcript will appear under; if the bot cannot be created, that\nmeeting never appears. If the user's note-taker is already scheduled for, joining, or in\nthat call (including one booked for a calendar event), it is kept and this meeting_id\nwill not resolve. Limited to 10 calls per minute and 60 per hour per user.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "meeting_url": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "meeting_url"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "cancel_meeting_bot",
+        "description": "Cancel a previously scheduled note-taker bot for a calendar event.\n\nTakes a calendar event ID (e.g. evt_abc123). Like scheduling,\ncancellation is asynchronous: the response acknowledges the request with\nthe event_id and status \"cancelling\".\n\nOnly works while the meeting is still upcoming or in progress. Cancelling for a\nmeeting that has already ended is rejected, because removing its note-taker also\ndeletes the recording and transcript — so this is never the way to tidy up a past\nmeeting, and an evt_ id you cached earlier may no longer be cancellable.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "event_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event_id"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "get_notetaker_automation",
+        "description": "Get the note-taker automation level for the authenticated user.\n\nThe automation level is the standing policy deciding which calendar\nevents the bot joins on its own. Returns {\"automation\": <level>} where\nlevel is one of JOIN_ALL_EVENTS, JOIN_AS_HOST, or MANUAL.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {},
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "set_notetaker_automation",
+        "description": "Set the note-taker automation level for the authenticated user.\n\nTakes one of JOIN_ALL_EVENTS (join every calendar event), JOIN_AS_HOST\n(join only events the user hosts), or MANUAL (join only events scheduled\nexplicitly via schedule_meeting_bot). Returns the new {\"automation\": <level>}.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "automation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "automation"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "list_rooms",
+        "description": "List rooms for the authenticated user.\n\nRooms group related meetings together. Supports text search by title\nand cursor-based pagination.\nUse expand to include related resources: \"documents\", \"meetings\".",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "search": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "expand": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "limit": {
+              "default": 25,
+              "type": "integer"
+            },
+            "cursor": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "get_document",
+        "description": "Get a document by ID.\n\nTakes a document ID (e.g. doc_abc123) and a format. Supported formats:\nhtml, markdown, raw, docx, json. Defaults to markdown.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "document_id": {
+              "type": "string"
+            },
+            "document_format": {
+              "default": "markdown",
+              "type": "string"
+            }
+          },
+          "required": [
+            "document_id"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "list_events",
+        "description": "Drain the authenticated user's event queue (e.g. meeting recaps becoming ready).\n\nReturns the oldest available events and leases them with a visibility\ntimeout, so an immediate second call returns nothing. Pass ``event_type``\nto lease only that type and leave every other type untouched for its own\nconsumer; omit it entirely to drain the whole queue — a blank type is an error,\nnot a wildcard.\n\nLeaving ack=false is the reliable mode: the event reappears once its\nvisibility timeout lapses unless you ack it via ack_events, so nothing is\nlost if handling fails. Passing ack=true retires events at pull time and\nis therefore at-most-once — a dropped response loses that batch.\n\nThe envelope ``id`` identifies this queue row, not the thing that happened:\nthe same meeting can be announced twice (a redelivered dispatch, or a recap\nregenerated with better content) and each arrives with a fresh ``id``. Key\nyour side effects on ``type`` plus an identifier inside ``payload`` so a\nrepeat *updates* what you already delivered instead of adding a second copy\n— and treat the newer payload as authoritative rather than discarding it.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "limit": {
+              "default": 25,
+              "type": "integer"
+            },
+            "ack": {
+              "default": false,
+              "type": "boolean"
+            },
+            "event_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "ack_events",
+        "description": "Acknowledge events so they are not redelivered.\n\nTakes a list of event IDs (e.g. qev_abc123) returned by list_events.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "event_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "event_ids"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "list_webhooks",
+        "description": "List all webhooks for the authenticated user.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {},
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "type": "object",
+          "x-fastmcp-wrap-result": true
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "create_webhook",
+        "description": "Create a new webhook.\n\nTakes a URL, a list of event types to subscribe to, and an optional\nenabled flag. Returns the created webhook including its secret.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "events": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "enabled": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "url",
+            "events"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "update_webhook",
+        "description": "Update an existing webhook.\n\nTakes a webhook ID (e.g. whk_abc123) and any fields to update.\nAt least one field must be provided.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "webhook_id": {
+              "type": "string"
+            },
+            "url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "events": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "enabled": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "required": [
+            "webhook_id"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      },
+      {
+        "name": "delete_webhook",
+        "description": "Delete a webhook.\n\nTakes a webhook ID (e.g. whk_abc123) and permanently removes it.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "webhook_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "webhook_id"
+          ],
+          "type": "object"
+        },
+        "outputSchema": {
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "type": "object"
+        },
+        "_meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        }
+      }
+    ]
+  }
+}

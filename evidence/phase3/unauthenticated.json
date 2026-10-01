@@ -1,0 +1,5 @@
+{
+  "status": 401,
+  "wwwAuthenticate": "Bearer resource_metadata=\"https://timeless-mcp-proxy.vercel.app/.well-known/oauth-protected-resource\", scope=\"mcp:read\"",
+  "body": "{\"error\":\"invalid_token\"}"
+}

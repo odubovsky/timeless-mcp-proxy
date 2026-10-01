@@ -1,0 +1,23 @@
+{
+  "toolCount": 17,
+  "problems": [],
+  "names": [
+    "list_meetings",
+    "list_upcoming_meetings",
+    "get_meeting_transcript",
+    "get_meeting_recording",
+    "schedule_meeting_bot",
+    "send_bot_to_meeting_url",
+    "cancel_meeting_bot",
+    "get_notetaker_automation",
+    "set_notetaker_automation",
+    "list_rooms",
+    "get_document",
+    "list_events",
+    "ack_events",
+    "list_webhooks",
+    "create_webhook",
+    "update_webhook",
+    "delete_webhook"
+  ]
+}
